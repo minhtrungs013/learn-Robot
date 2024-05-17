@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.11.9 on win32)" generated="2024-05-17T15:07:56.199508" rpa="false" schemaversion="5">
+<suite id="s1" name="Api" source="D:\Robot\pythonProject1\tests\Api.robot">
+<test id="s1-t1" name="TC1: Book service fails when the role has no access permissions" line="21">
+<kw name="Log" owner="BuiltIn" type="SETUP">
+<msg time="2024-05-17T15:07:56.519429" level="INFO">1212</msg>
+<arg>1212</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-05-17T15:07:56.519429" elapsed="0.002000"/>
+</kw>
+<kw name="Given I have a valid access token by logging in with the account &quot;${username}&quot; and &quot;${password}&quot;" source_name="I have a valid access token by logging in with the account &quot;${username}&quot; and &quot;${password}&quot;">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-05-17T15:07:56.522431" level="INFO">Creating Session using : alias=myapi, url=https://api-gabispa-c2nd.onrender.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>myapi</arg>
+<arg>${API_URL}</arg>
+<arg>verify=${False}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-05-17T15:07:56.522431" elapsed="0.001012"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-05-17T15:07:56.525468" level="INFO">&amp;{headers} = { Content-Type=application/json }</msg>
+<var>&amp;{headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-05-17T15:07:56.524455" elapsed="0.001013"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-05-17T15:07:56.526465" level="INFO">&amp;{data} = { username=minhtrung | password=123123Aa. }</msg>
+<var>&amp;{data}</var>
+<arg>username=${username}</arg>
+<arg>password=${password}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-05-17T15:07:56.525468" elapsed="0.000997"/>
+</kw>
+<kw name="Post Request" owner="RequestsLibrary">
+<msg time="2024-05-17T15:07:56.526465" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg time="2024-05-17T15:07:57.299444" level="INFO">POST Request : url=https://api-gabispa-c2nd.onrender.com/api/v1/auth/sign-in 
+ path_url=/api/v1/auth/sign-in 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '50'} 
+ body={"username": "minhtrung", "password": "123123Aa."} 
+ </msg>
+<msg time="2024-05-17T15:07:57.299444" level="INFO">POST Response : url=https://api-gabispa-c2nd.onrender.com/api/v1/auth/sign-in 
+ status=202, reason=Accepted 
+ headers={'Date': 'Fri, 17 May 2024 08:07:57 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '445', 'Connection': 'keep-alive', 'CF-Ray': '88521de31f4e2eb0-SIN', 'CF-Cache-Status': 'DYNAMIC', 'Content-Encoding': 'gzip', 'ETag': 'W/"2d4-J/KJi/s5EYeVtfIyZiAtlwX6k+Y"', 'Vary': 'Origin, Accept-Encoding', 'access-control-allow-credentials': 'true', 'rndr-id': '796715f3-84fe-4fe8', 'x-powered-by': 'Express', 'x-render-origin-server': 'Render', 'Server': 'cloudflare', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={"statusCode":202,"message":"Successfully","data":{"tokens":{"accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlMTM5ZmNmMS04NzIzLTQ1NmItOGJlZi03NzljMDY1YzI4YzYiLCJ1c2VybmFtZSI6Im1pbmh0cnVuZyIsInJvbGUiOiJLaMOhY2ggaMOgbmciLCJpYXQiOjE3MTU5MzMyNzcsImV4cCI6MTcxNTkzNjg3N30.vMruABwtQbAXFxuktWXaZhn3JunyMfW-R73_X6hDABg","refreshToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlMTM5ZmNmMS04NzIzLTQ1NmItOGJlZi03NzljMDY1YzI4YzYiLCJ1c2VybmFtZSI6Im1pbmh0cnVuZyIsInJvbGUiOiJLaMOhY2ggaMOgbmciLCJpYXQiOjE3MTU5MzMyNzcsImV4cCI6MTcxNjE5MjQ3N30.5SWOqOogzdlOLhZKFIAT4xcb1w_chyBX0PjU1EX2D1E"},"user":{"id":"e139fcf1-8723-456b-8bef-779c065c28c6","username":"minhtrung","role":"U2FsdGVkX19sx4XMTG9JApWbvFiZVm+/Nzrtl4o1nU0="}}} 
+ </msg>
+<msg time="2024-05-17T15:07:57.299444" level="INFO">D:\Robot\pythonProject1\.venv\Lib\site-packages\urllib3\connectionpool.py:1103: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api-gabispa-c2nd.onrender.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2024-05-17T15:07:57.300484" level="INFO">${response} = &lt;Response [202]&gt;</msg>
+<var>${response}</var>
+<arg>myapi</arg>
+<arg>/api/v1/auth/sign-in</arg>
+<arg>data=${data}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<status status="PASS" start="2024-05-17T15:07:56.526465" elapsed="0.774019"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<msg time="2024-05-17T15:07:57.300484" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>202</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-05-17T15:07:57.300484" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-05-17T15:07:57.301484" level="INFO">${body} = {'statusCode': 202, 'message': 'Successfully', 'data': {'tokens': {'accessToken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlMTM5ZmNmMS04NzIzLTQ1NmItOGJlZi03NzljMDY1YzI4YzYiLCJ1c2VybmFtZSI6Im1p...</msg>
+<var>${body}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-05-17T15:07:57.301484" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-05-17T15:07:57.302485" level="INFO">${access_token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlMTM5ZmNmMS04NzIzLTQ1NmItOGJlZi03NzljMDY1YzI4YzYiLCJ1c2VybmFtZSI6Im1pbmh0cnVuZyIsInJvbGUiOiJLaMOhY2ggaMOgbmciLCJpYXQiOjE3MTU5MzMyNzcsImV4cCI6MTcxNTkzNjg...</msg>
+<var>${access_token}</var>
+<arg>${body['data']['tokens']['accessToken']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-05-17T15:07:57.301484" elapsed="0.001001"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2024-05-17T15:07:57.302485" level="INFO">${access_token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlMTM5ZmNmMS04NzIzLTQ1NmItOGJlZi03NzljMDY1YzI4YzYiLCJ1c2VybmFtZSI6Im1pbmh0cnVuZyIsInJvbGUiOiJLaMOhY2ggaMOgbmciLCJpYXQiOjE3MTU5MzMyNzcsImV4cCI6MTcxNTkzNjg...</msg>
+<arg>${access_token}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2024-05-17T15:07:57.302485" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-05-17T15:07:56.522431" elapsed="0.780054"/>
+</kw>
+<kw name="When I attempt to create a task with the following details">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-05-17T15:07:57.303451" level="INFO">&amp;{headers} = { Content-Type=application/json | Authorization=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlMTM5ZmNmMS04NzIzLTQ1NmItOGJlZi03NzljMDY1YzI4YzYiLCJ1c2VybmFtZSI6Im1pbmh0cnVuZyIsInJvbGUiOiJLaMOh...</msg>
+<var>&amp;{headers}</var>
+<arg>Content-Type=application/json</arg>
+<arg>Authorization=Bearer ${access_token}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-05-17T15:07:57.303451" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2024-05-17T15:07:57.303451" level="INFO">${task_details['workingTimePerDay']} = 1</msg>
+<var>${task_details['workingTimePerDay']}</var>
+<arg>${task_details['workingTimePerDay']}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2024-05-17T15:07:57.303451" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-05-17T15:07:57.305451" level="INFO">&amp;{converted_task_details} = { name=Example Task | description=This is an example task | object=Mẹ mang thai | workingTimePerDay=1 }</msg>
+<var>&amp;{converted_task_details}</var>
+<arg>name=${task_details['name']}</arg>
+<arg>description=${task_details['description']}</arg>
+<arg>object=${task_details['object']}</arg>
+<arg>workingTimePerDay=${task_details['workingTimePerDay']}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-05-17T15:07:57.304487" elapsed="0.000964"/>
+</kw>
+<kw name="Post Request" owner="RequestsLibrary">
+<msg time="2024-05-17T15:07:57.305451" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg time="2024-05-17T15:07:57.394970" level="INFO">POST Request : url=https://api-gabispa-c2nd.onrender.com/api/v1/tasks 
+ path_url=/api/v1/tasks 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlMTM5ZmNmMS04NzIzLTQ1NmItOGJlZi03NzljMDY1YzI4YzYiLCJ1c2VybmFtZSI6Im1pbmh0cnVuZyIsInJvbGUiOiJLaMOhY2ggaMOgbmciLCJpYXQiOjE3MTU5MzMyNzcsImV4cCI6MTcxNTkzNjg3N30.vMruABwtQbAXFxuktWXaZhn3JunyMfW-R73_X6hDABg', 'Content-Length': '121'} 
+ body={"name": "Example Task", "description": "This is an example task", "object": "M\u1eb9 mang thai", "workingTimePerDay": 1} 
+ </msg>
+<msg time="2024-05-17T15:07:57.394970" level="INFO">POST Response : url=https://api-gabispa-c2nd.onrender.com/api/v1/tasks 
+ status=403, reason=Forbidden 
+ headers={'Date': 'Fri, 17 May 2024 08:07:57 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '121', 'Connection': 'keep-alive', 'CF-Ray': '88521de718662eb0-SIN', 'CF-Cache-Status': 'DYNAMIC', 'Content-Encoding': 'gzip', 'ETag': 'W/"68-7ARCdw86ooWRd93DxPoh/efWTf0"', 'Vary': 'Origin, Accept-Encoding', 'access-control-allow-credentials': 'true', 'rndr-id': '81cea90b-865b-40c5', 'x-powered-by': 'Express', 'x-render-origin-server': 'Render', 'Server': 'cloudflare', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={"timestamp":"Friday, 17-05-2024 03:07 PM","statusCode":403,"message":"Role have no access permissions"} 
+ </msg>
+<msg time="2024-05-17T15:07:57.394970" level="INFO">D:\Robot\pythonProject1\.venv\Lib\site-packages\urllib3\connectionpool.py:1103: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api-gabispa-c2nd.onrender.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2024-05-17T15:07:57.395967" level="INFO">${response} = &lt;Response [403]&gt;</msg>
+<var>${response}</var>
+<arg>myapi</arg>
+<arg>/api/v1/tasks</arg>
+<arg>data=${converted_task_details}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<status status="PASS" start="2024-05-17T15:07:57.305451" elapsed="0.090516"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2024-05-17T15:07:57.395967" level="INFO">${response} = &lt;Response [403]&gt;</msg>
+<arg>${response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2024-05-17T15:07:57.395967" elapsed="0.000000"/>
+</kw>
+<arg>&amp;{task_details}</arg>
+<status status="PASS" start="2024-05-17T15:07:57.302485" elapsed="0.093482"/>
+</kw>
+<kw name="Then the creation should fail with status code &quot;403&quot;" source_name="Then the creation should fail with status code &quot;${status_code}&quot;">
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<msg time="2024-05-17T15:07:57.396980" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>${status_code}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-05-17T15:07:57.396980" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-05-17T15:07:57.397968" level="INFO">Response Body: {'timestamp': 'Friday, 17-05-2024 03:07 PM', 'statusCode': 403, 'message': 'Role have no access permissions'}</msg>
+<arg>Response Body: ${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-05-17T15:07:57.396980" elapsed="0.000988"/>
+</kw>
+<status status="PASS" start="2024-05-17T15:07:57.395967" elapsed="0.002001"/>
+</kw>
+<doc>Verify that booking service fails when the role has no access permissions</doc>
+<tag>Function</tag>
+<tag>high</tag>
+<status status="PASS" start="2024-05-17T15:07:56.518424" elapsed="0.879544"/>
+</test>
+<test id="s1-t2" name="TC2: Task has already been used by username" line="27">
+<kw name="Log" owner="BuiltIn" type="SETUP">
+<msg time="2024-05-17T15:07:57.398967" level="INFO">1212</msg>
+<arg>1212</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-05-17T15:07:57.398967" elapsed="0.000000"/>
+</kw>
+<kw name="Given I have a valid access token by logging in with the account &quot;${usernameEdit}&quot; and &quot;${passwordEdit}&quot;" source_name="I have a valid access token by logging in with the account &quot;${username}&quot; and &quot;${password}&quot;">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-05-17T15:07:57.399980" level="INFO">Creating Session using : alias=myapi, url=https://api-gabispa-c2nd.onrender.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>myapi</arg>
+<arg>${API_URL}</arg>
+<arg>verify=${False}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-05-17T15:07:57.398967" elapsed="0.001013"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-05-17T15:07:57.399980" level="INFO">&amp;{headers} = { Content-Type=application/json }</msg>
+<var>&amp;{headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-05-17T15:07:57.399980" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-05-17T15:07:57.399980" level="INFO">&amp;{data} = { username=minhtrungadmin | password=123123Aa. }</msg>
+<var>&amp;{data}</var>
+<arg>username=${username}</arg>
+<arg>password=${password}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-05-17T15:07:57.399980" elapsed="0.000000"/>
+</kw>
+<kw name="Post Request" owner="RequestsLibrary">
+<msg time="2024-05-17T15:07:57.400975" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg time="2024-05-17T15:07:58.108450" level="INFO">POST Request : url=https://api-gabispa-c2nd.onrender.com/api/v1/auth/sign-in 
+ path_url=/api/v1/auth/sign-in 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '55'} 
+ body={"username": "minhtrungadmin", "password": "123123Aa."} 
+ </msg>
+<msg time="2024-05-17T15:07:58.108450" level="INFO">POST Response : url=https://api-gabispa-c2nd.onrender.com/api/v1/auth/sign-in 
+ status=202, reason=Accepted 
+ headers={'Date': 'Fri, 17 May 2024 08:07:58 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '480', 'Connection': 'keep-alive', 'CF-Ray': '88521de869dd449c-SIN', 'CF-Cache-Status': 'DYNAMIC', 'Content-Encoding': 'gzip', 'ETag': 'W/"30b-Rs+Eoij4fvL9e1gfwmNvSkSzA8A"', 'Vary': 'Origin, Accept-Encoding', 'access-control-allow-credentials': 'true', 'rndr-id': '76f7dc25-dad4-445c', 'x-powered-by': 'Express', 'x-render-origin-server': 'Render', 'Server': 'cloudflare', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={"statusCode":202,"message":"Successfully","data":{"tokens":{"accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMjcwYzAwZi0zZDM1LTRhMTktOGI2YS1lYmU4NjE0Y2ExOGMiLCJ1c2VybmFtZSI6Im1pbmh0cnVuZ2FkbWluIiwicm9sZSI6IlF14bqjbiB0cuG7iyB2acOqbiIsImlhdCI6MTcxNTkzMzI3OCwiZXhwIjoxNzE1OTM2ODc4fQ.H1yY-HZM6eGtnXE8K-tJKLtldHu2M10g-TLIWwndUmk","refreshToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMjcwYzAwZi0zZDM1LTRhMTktOGI2YS1lYmU4NjE0Y2ExOGMiLCJ1c2VybmFtZSI6Im1pbmh0cnVuZ2FkbWluIiwicm9sZSI6IlF14bqjbiB0cuG7iyB2acOqbiIsImlhdCI6MTcxNTkzMzI3OCwiZXhwIjoxNzE2MTkyNDc4fQ.tYy4q6gNoNSLIdFx6jYeAqiCehOS5RxmHt0ZjE_YI54"},"user":{"id":"0270c00f-3d35-4a19-8b6a-ebe8614ca18c","username":"minhtrungadmin","role":"U2FsdGVkX18dUo8g8fHCLA9q++Z7/7kNZdjecr+pZ2LHt0ttyiC0WRVzNP9XbqxV"}}} 
+ </msg>
+<msg time="2024-05-17T15:07:58.108450" level="INFO">D:\Robot\pythonProject1\.venv\Lib\site-packages\urllib3\connectionpool.py:1103: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api-gabispa-c2nd.onrender.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2024-05-17T15:07:58.109421" level="INFO">${response} = &lt;Response [202]&gt;</msg>
+<var>${response}</var>
+<arg>myapi</arg>
+<arg>/api/v1/auth/sign-in</arg>
+<arg>data=${data}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<status status="PASS" start="2024-05-17T15:07:57.399980" elapsed="0.709441"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<msg time="2024-05-17T15:07:58.109421" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>202</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-05-17T15:07:58.109421" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-05-17T15:07:58.110421" level="INFO">${body} = {'statusCode': 202, 'message': 'Successfully', 'data': {'tokens': {'accessToken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMjcwYzAwZi0zZDM1LTRhMTktOGI2YS1lYmU4NjE0Y2ExOGMiLCJ1c2VybmFtZSI6Im1p...</msg>
+<var>${body}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-05-17T15:07:58.109421" elapsed="0.001000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-05-17T15:07:58.110421" level="INFO">${access_token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMjcwYzAwZi0zZDM1LTRhMTktOGI2YS1lYmU4NjE0Y2ExOGMiLCJ1c2VybmFtZSI6Im1pbmh0cnVuZ2FkbWluIiwicm9sZSI6IlF14bqjbiB0cuG7iyB2acOqbiIsImlhdCI6MTcxNTkzMzI3OCwiZXh...</msg>
+<var>${access_token}</var>
+<arg>${body['data']['tokens']['accessToken']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-05-17T15:07:58.110421" elapsed="0.000000"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2024-05-17T15:07:58.111421" level="INFO">${access_token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMjcwYzAwZi0zZDM1LTRhMTktOGI2YS1lYmU4NjE0Y2ExOGMiLCJ1c2VybmFtZSI6Im1pbmh0cnVuZ2FkbWluIiwicm9sZSI6IlF14bqjbiB0cuG7iyB2acOqbiIsImlhdCI6MTcxNTkzMzI3OCwiZXh...</msg>
+<arg>${access_token}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2024-05-17T15:07:58.111421" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-05-17T15:07:57.398967" elapsed="0.712454"/>
+</kw>
+<kw name="When I attempt to create a task with the following details">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-05-17T15:07:58.112421" level="INFO">&amp;{headers} = { Content-Type=application/json | Authorization=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMjcwYzAwZi0zZDM1LTRhMTktOGI2YS1lYmU4NjE0Y2ExOGMiLCJ1c2VybmFtZSI6Im1pbmh0cnVuZ2FkbWluIiwicm9sZSI6...</msg>
+<var>&amp;{headers}</var>
+<arg>Content-Type=application/json</arg>
+<arg>Authorization=Bearer ${access_token}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-05-17T15:07:58.111421" elapsed="0.001000"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2024-05-17T15:07:58.112421" level="INFO">${task_details['workingTimePerDay']} = 1</msg>
+<var>${task_details['workingTimePerDay']}</var>
+<arg>${task_details['workingTimePerDay']}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2024-05-17T15:07:58.112421" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-05-17T15:07:58.113421" level="INFO">&amp;{converted_task_details} = { name=Example Task | description=This is an example task | object=Mẹ mang thai | workingTimePerDay=1 }</msg>
+<var>&amp;{converted_task_details}</var>
+<arg>name=${task_details['name']}</arg>
+<arg>description=${task_details['description']}</arg>
+<arg>object=${task_details['object']}</arg>
+<arg>workingTimePerDay=${task_details['workingTimePerDay']}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-05-17T15:07:58.112421" elapsed="0.001000"/>
+</kw>
+<kw name="Post Request" owner="RequestsLibrary">
+<msg time="2024-05-17T15:07:58.114421" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg time="2024-05-17T15:07:58.219647" level="INFO">POST Request : url=https://api-gabispa-c2nd.onrender.com/api/v1/tasks 
+ path_url=/api/v1/tasks 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMjcwYzAwZi0zZDM1LTRhMTktOGI2YS1lYmU4NjE0Y2ExOGMiLCJ1c2VybmFtZSI6Im1pbmh0cnVuZ2FkbWluIiwicm9sZSI6IlF14bqjbiB0cuG7iyB2acOqbiIsImlhdCI6MTcxNTkzMzI3OCwiZXhwIjoxNzE1OTM2ODc4fQ.H1yY-HZM6eGtnXE8K-tJKLtldHu2M10g-TLIWwndUmk', 'Content-Length': '121'} 
+ body={"name": "Example Task", "description": "This is an example task", "object": "M\u1eb9 mang thai", "workingTimePerDay": 1} 
+ </msg>
+<msg time="2024-05-17T15:07:58.219647" level="INFO">POST Response : url=https://api-gabispa-c2nd.onrender.com/api/v1/tasks 
+ status=409, reason=Conflict 
+ headers={'Date': 'Fri, 17 May 2024 08:07:58 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '136', 'Connection': 'keep-alive', 'CF-Ray': '88521dec2d88449c-SIN', 'CF-Cache-Status': 'DYNAMIC', 'Content-Encoding': 'gzip', 'ETag': 'W/"7d-BzXIVIJQs6uxe8RrHTvW7eLAYBA"', 'Vary': 'Origin, Accept-Encoding', 'access-control-allow-credentials': 'true', 'rndr-id': '1ec49e12-f6a3-4af0', 'x-powered-by': 'Express', 'x-render-origin-server': 'Render', 'Server': 'cloudflare', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={"timestamp":"Friday, 17-05-2024 03:07 PM","statusCode":409,"message":"Task has already been used by username: Example Task"} 
+ </msg>
+<msg time="2024-05-17T15:07:58.219647" level="INFO">D:\Robot\pythonProject1\.venv\Lib\site-packages\urllib3\connectionpool.py:1103: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api-gabispa-c2nd.onrender.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2024-05-17T15:07:58.220657" level="INFO">${response} = &lt;Response [409]&gt;</msg>
+<var>${response}</var>
+<arg>myapi</arg>
+<arg>/api/v1/tasks</arg>
+<arg>data=${converted_task_details}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<status status="PASS" start="2024-05-17T15:07:58.113421" elapsed="0.107236"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2024-05-17T15:07:58.220657" level="INFO">${response} = &lt;Response [409]&gt;</msg>
+<arg>${response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2024-05-17T15:07:58.220657" elapsed="0.000000"/>
+</kw>
+<arg>&amp;{task_details}</arg>
+<status status="PASS" start="2024-05-17T15:07:58.111421" elapsed="0.109236"/>
+</kw>
+<kw name="Then the creation should fail with status code 409 and error message &quot;Task has already been used by username: Example Task&quot;">
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<msg time="2024-05-17T15:07:58.221700" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>409</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-05-17T15:07:58.220657" elapsed="0.001043"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-05-17T15:07:58.221700" level="INFO">${body} = {'timestamp': 'Friday, 17-05-2024 03:07 PM', 'statusCode': 409, 'message': 'Task has already been used by username: Example Task'}</msg>
+<var>${body}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-05-17T15:07:58.221700" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${body['message']}</arg>
+<arg>Task has already been used by username: Example Task</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-05-17T15:07:58.222652" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-05-17T15:07:58.222652" level="INFO">Response Body: {'timestamp': 'Friday, 17-05-2024 03:07 PM', 'statusCode': 409, 'message': 'Task has already been used by username: Example Task'}</msg>
+<arg>Response Body: ${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-05-17T15:07:58.222652" elapsed="0.001002"/>
+</kw>
+<status status="PASS" start="2024-05-17T15:07:58.220657" elapsed="0.002997"/>
+</kw>
+<doc>Verify that an error is returned when the task name has already been used</doc>
+<tag>Function</tag>
+<tag>high</tag>
+<status status="PASS" start="2024-05-17T15:07:57.397968" elapsed="0.825686"/>
+</test>
+<test id="s1-t3" name="TC3: Book service successfully" line="33">
+<kw name="Log" owner="BuiltIn" type="SETUP">
+<msg time="2024-05-17T15:07:58.225666" level="INFO">1212</msg>
+<arg>1212</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-05-17T15:07:58.224664" elapsed="0.001002"/>
+</kw>
+<kw name="Given I have a valid access token by logging in with the account &quot;${usernameEdit}&quot; and &quot;${passwordEdit}&quot;" source_name="I have a valid access token by logging in with the account &quot;${username}&quot; and &quot;${password}&quot;">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-05-17T15:07:58.226691" level="INFO">Creating Session using : alias=myapi, url=https://api-gabispa-c2nd.onrender.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>myapi</arg>
+<arg>${API_URL}</arg>
+<arg>verify=${False}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-05-17T15:07:58.226691" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-05-17T15:07:58.227658" level="INFO">&amp;{headers} = { Content-Type=application/json }</msg>
+<var>&amp;{headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-05-17T15:07:58.227658" elapsed="0.000000"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-05-17T15:07:58.227658" level="INFO">&amp;{data} = { username=minhtrungadmin | password=123123Aa. }</msg>
+<var>&amp;{data}</var>
+<arg>username=${username}</arg>
+<arg>password=${password}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-05-17T15:07:58.227658" elapsed="0.000000"/>
+</kw>
+<kw name="Post Request" owner="RequestsLibrary">
+<msg time="2024-05-17T15:07:58.227658" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg time="2024-05-17T15:07:58.907052" level="INFO">POST Request : url=https://api-gabispa-c2nd.onrender.com/api/v1/auth/sign-in 
+ path_url=/api/v1/auth/sign-in 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Content-Length': '55'} 
+ body={"username": "minhtrungadmin", "password": "123123Aa."} 
+ </msg>
+<msg time="2024-05-17T15:07:58.908090" level="INFO">POST Response : url=https://api-gabispa-c2nd.onrender.com/api/v1/auth/sign-in 
+ status=202, reason=Accepted 
+ headers={'Date': 'Fri, 17 May 2024 08:07:58 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '479', 'Connection': 'keep-alive', 'CF-Ray': '88521ded8e5a9b96-SIN', 'CF-Cache-Status': 'DYNAMIC', 'Content-Encoding': 'gzip', 'ETag': 'W/"30b-hzy0C9ok+viQnLyURt0Jleq0Cak"', 'Vary': 'Origin, Accept-Encoding', 'access-control-allow-credentials': 'true', 'rndr-id': '790eac44-33ac-4176', 'x-powered-by': 'Express', 'x-render-origin-server': 'Render', 'Server': 'cloudflare', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={"statusCode":202,"message":"Successfully","data":{"tokens":{"accessToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMjcwYzAwZi0zZDM1LTRhMTktOGI2YS1lYmU4NjE0Y2ExOGMiLCJ1c2VybmFtZSI6Im1pbmh0cnVuZ2FkbWluIiwicm9sZSI6IlF14bqjbiB0cuG7iyB2acOqbiIsImlhdCI6MTcxNTkzMzI3OCwiZXhwIjoxNzE1OTM2ODc4fQ.H1yY-HZM6eGtnXE8K-tJKLtldHu2M10g-TLIWwndUmk","refreshToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMjcwYzAwZi0zZDM1LTRhMTktOGI2YS1lYmU4NjE0Y2ExOGMiLCJ1c2VybmFtZSI6Im1pbmh0cnVuZ2FkbWluIiwicm9sZSI6IlF14bqjbiB0cuG7iyB2acOqbiIsImlhdCI6MTcxNTkzMzI3OCwiZXhwIjoxNzE2MTkyNDc4fQ.tYy4q6gNoNSLIdFx6jYeAqiCehOS5RxmHt0ZjE_YI54"},"user":{"id":"0270c00f-3d35-4a19-8b6a-ebe8614ca18c","username":"minhtrungadmin","role":"U2FsdGVkX1+R98h90oz0q6ufTno9AiCnXcx3pXX4NQlZT4sA/3UvM5CJmnXZaiF2"}}} 
+ </msg>
+<msg time="2024-05-17T15:07:58.908090" level="INFO">D:\Robot\pythonProject1\.venv\Lib\site-packages\urllib3\connectionpool.py:1103: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api-gabispa-c2nd.onrender.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2024-05-17T15:07:58.908090" level="INFO">${response} = &lt;Response [202]&gt;</msg>
+<var>${response}</var>
+<arg>myapi</arg>
+<arg>/api/v1/auth/sign-in</arg>
+<arg>data=${data}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<status status="PASS" start="2024-05-17T15:07:58.227658" elapsed="0.680432"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<msg time="2024-05-17T15:07:58.908090" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>202</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-05-17T15:07:58.908090" elapsed="0.000995"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-05-17T15:07:58.909085" level="INFO">${body} = {'statusCode': 202, 'message': 'Successfully', 'data': {'tokens': {'accessToken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMjcwYzAwZi0zZDM1LTRhMTktOGI2YS1lYmU4NjE0Y2ExOGMiLCJ1c2VybmFtZSI6Im1p...</msg>
+<var>${body}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-05-17T15:07:58.909085" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-05-17T15:07:58.910085" level="INFO">${access_token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMjcwYzAwZi0zZDM1LTRhMTktOGI2YS1lYmU4NjE0Y2ExOGMiLCJ1c2VybmFtZSI6Im1pbmh0cnVuZ2FkbWluIiwicm9sZSI6IlF14bqjbiB0cuG7iyB2acOqbiIsImlhdCI6MTcxNTkzMzI3OCwiZXh...</msg>
+<var>${access_token}</var>
+<arg>${body['data']['tokens']['accessToken']}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-05-17T15:07:58.909085" elapsed="0.001000"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2024-05-17T15:07:58.910085" level="INFO">${access_token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMjcwYzAwZi0zZDM1LTRhMTktOGI2YS1lYmU4NjE0Y2ExOGMiLCJ1c2VybmFtZSI6Im1pbmh0cnVuZ2FkbWluIiwicm9sZSI6IlF14bqjbiB0cuG7iyB2acOqbiIsImlhdCI6MTcxNTkzMzI3OCwiZXh...</msg>
+<arg>${access_token}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2024-05-17T15:07:58.910085" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2024-05-17T15:07:58.225666" elapsed="0.684419"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-05-17T15:07:58.910085" level="INFO">&amp;{task_details} = { name=Example Task new1 | description=This is an example task | object=Mẹ mang thai | workingTimePerDay=1 }</msg>
+<var>&amp;{task_details}</var>
+<arg>name=Example Task new1</arg>
+<arg>description=This is an example task</arg>
+<arg>object=Mẹ mang thai</arg>
+<arg>workingTimePerDay=1</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-05-17T15:07:58.910085" elapsed="0.000000"/>
+</kw>
+<kw name="When I attempt to create a task with the following details">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-05-17T15:07:58.911085" level="INFO">&amp;{headers} = { Content-Type=application/json | Authorization=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMjcwYzAwZi0zZDM1LTRhMTktOGI2YS1lYmU4NjE0Y2ExOGMiLCJ1c2VybmFtZSI6Im1pbmh0cnVuZ2FkbWluIiwicm9sZSI6...</msg>
+<var>&amp;{headers}</var>
+<arg>Content-Type=application/json</arg>
+<arg>Authorization=Bearer ${access_token}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-05-17T15:07:58.911085" elapsed="0.000000"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2024-05-17T15:07:58.912084" level="INFO">${task_details['workingTimePerDay']} = 1</msg>
+<var>${task_details['workingTimePerDay']}</var>
+<arg>${task_details['workingTimePerDay']}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2024-05-17T15:07:58.911085" elapsed="0.000999"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-05-17T15:07:58.913087" level="INFO">&amp;{converted_task_details} = { name=Example Task new1 | description=This is an example task | object=Mẹ mang thai | workingTimePerDay=1 }</msg>
+<var>&amp;{converted_task_details}</var>
+<arg>name=${task_details['name']}</arg>
+<arg>description=${task_details['description']}</arg>
+<arg>object=${task_details['object']}</arg>
+<arg>workingTimePerDay=${task_details['workingTimePerDay']}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-05-17T15:07:58.912084" elapsed="0.001003"/>
+</kw>
+<kw name="Post Request" owner="RequestsLibrary">
+<msg time="2024-05-17T15:07:58.913087" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg time="2024-05-17T15:07:58.993747" level="INFO">POST Request : url=https://api-gabispa-c2nd.onrender.com/api/v1/tasks 
+ path_url=/api/v1/tasks 
+ headers={'User-Agent': 'python-requests/2.31.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMjcwYzAwZi0zZDM1LTRhMTktOGI2YS1lYmU4NjE0Y2ExOGMiLCJ1c2VybmFtZSI6Im1pbmh0cnVuZ2FkbWluIiwicm9sZSI6IlF14bqjbiB0cuG7iyB2acOqbiIsImlhdCI6MTcxNTkzMzI3OCwiZXhwIjoxNzE1OTM2ODc4fQ.H1yY-HZM6eGtnXE8K-tJKLtldHu2M10g-TLIWwndUmk', 'Content-Length': '126'} 
+ body={"name": "Example Task new1", "description": "This is an example task", "object": "M\u1eb9 mang thai", "workingTimePerDay": 1} 
+ </msg>
+<msg time="2024-05-17T15:07:58.994740" level="INFO">POST Response : url=https://api-gabispa-c2nd.onrender.com/api/v1/tasks 
+ status=200, reason=OK 
+ headers={'Date': 'Fri, 17 May 2024 08:07:58 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '92', 'Connection': 'keep-alive', 'CF-Ray': '88521df12b889b96-SIN', 'CF-Cache-Status': 'DYNAMIC', 'Content-Encoding': 'gzip', 'ETag': 'W/"46-YMIlkZaKXmsiFgdLz6s1S7+cwyc"', 'Vary': 'Origin, Accept-Encoding', 'access-control-allow-credentials': 'true', 'rndr-id': 'b0df5e04-d7bb-4154', 'x-powered-by': 'Express', 'x-render-origin-server': 'Render', 'Server': 'cloudflare', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={"statusCode":200,"message":"Successfully","data":"No data responded"} 
+ </msg>
+<msg time="2024-05-17T15:07:58.994740" level="INFO">D:\Robot\pythonProject1\.venv\Lib\site-packages\urllib3\connectionpool.py:1103: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api-gabispa-c2nd.onrender.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2024-05-17T15:07:58.994740" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>myapi</arg>
+<arg>/api/v1/tasks</arg>
+<arg>data=${converted_task_details}</arg>
+<arg>headers=${headers}</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<status status="PASS" start="2024-05-17T15:07:58.913087" elapsed="0.081653"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2024-05-17T15:07:58.994740" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<arg>${response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2024-05-17T15:07:58.994740" elapsed="0.000000"/>
+</kw>
+<arg>&amp;{task_details}</arg>
+<status status="PASS" start="2024-05-17T15:07:58.911085" elapsed="0.083655"/>
+</kw>
+<kw name="Then the creation should fail with status code &quot;200&quot;" source_name="Then the creation should fail with status code &quot;${status_code}&quot;">
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<msg time="2024-05-17T15:07:58.995735" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>${status_code}</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-05-17T15:07:58.995735" elapsed="0.000000"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-05-17T15:07:58.996773" level="INFO">Response Body: {'statusCode': 200, 'message': 'Successfully', 'data': 'No data responded'}</msg>
+<arg>Response Body: ${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-05-17T15:07:58.995735" elapsed="0.001038"/>
+</kw>
+<status status="PASS" start="2024-05-17T15:07:58.995735" elapsed="0.001038"/>
+</kw>
+<status status="PASS" start="2024-05-17T15:07:58.224664" elapsed="0.772109"/>
+</test>
+<status status="PASS" start="2024-05-17T15:07:56.219512" elapsed="2.778262"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="2" fail="0" skip="0">Function</stat>
+<stat pass="2" fail="0" skip="0">high</stat>
+</tag>
+<suite>
+<stat pass="3" fail="0" skip="0" id="s1" name="Api">Api</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2024-05-17T15:07:56.526465" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg time="2024-05-17T15:07:57.305451" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg time="2024-05-17T15:07:57.400975" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg time="2024-05-17T15:07:58.114421" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg time="2024-05-17T15:07:58.227658" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg time="2024-05-17T15:07:58.913087" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+</errors>
+</robot>

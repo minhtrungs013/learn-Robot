@@ -1,0 +1,23 @@
+
+‹python:S1192ü"GDefine a constant instead of duplicating this literal '*HTML*' 4 times.(íì¦ÊùÿÿÿÿJ$7f1340a9-7f40-4ef4-83be-fcd4689b27a6
+python:S1134+"LTake the required action to fix the issue indicated by this "FIXME" comment.(™ÿ“£ùÿÿÿÿJ$cdb19fb1-32b7-4bd0-b3d4-66029240e6b3
+{python:S5754›"<Specify an exception class to catch or reraise the exception(ˆÊÉ·J$4180483f-31ab-425d-b2fe-dcbf34558be9
+{python:S5754ª"<Specify an exception class to catch or reraise the exception(ˆÊÉ·J$1551be27-5991-4e80-8d15-c17452706ef8
+{python:S5754ƒ"<Specify an exception class to catch or reraise the exception(ˆÊÉ·J$c1f4de81-3dd5-4e9b-bf37-e87482dce64a
+jpython:S5806’"+Rename this variable; it shadows a builtin.(Û—‚ÑJ$568b1e11-4795-47b7-bfbd-5771b35a2716
+ipython:S5806¦"+Rename this variable; it shadows a builtin.(ê¯ÙvJ$91a3e1ff-8e3f-4fef-829f-a88b58c4ab69
+qpython:S1481á"2Replace the unused local variable "name" with "_".(öåäÀJ$52fa20fc-bcac-4b8f-b602-cd91964f69c4
+˜python:S3776Ø"TRefactor this function to reduce its Cognitive Complexity from 19 to the 15 allowed.(ÓÿåüıÿÿÿÿJ$19ffb84a-ac6f-41ad-ae89-3cc6bfa334ec
+spython:S1135õ"4Complete the task associated to this "TODO" comment.(â‰®J$c0df7585-bf8e-4f5a-8bb3-cff7cc34106c
+“python:S3776‘"TRefactor this function to reduce its Cognitive Complexity from 19 to the 15 allowed.(Ó˜âåJ$cf0fd1f4-9b3c-4cb6-8525-8fb45cef8043
+˜python:S3776É"TRefactor this function to reduce its Cognitive Complexity from 20 to the 15 allowed.(¸—ÉÁÿÿÿÿÿJ$7d9fcdc6-76c7-49ba-87cb-9b4e96016e77
+˜python:S3776„	"TRefactor this function to reduce its Cognitive Complexity from 20 to the 15 allowed.(Š¢«§üÿÿÿÿJ$14071c7d-8a1e-438f-bc90-24d9037541e1
+’python:S3776¾	"TRefactor this function to reduce its Cognitive Complexity from 24 to the 15 allowed.(…äWJ$c46641a2-3b40-4efb-81c2-f18e88f8dcd7
+{python:S5754…
+"<Specify an exception class to catch or reraise the exception(ˆÊÉ·J$a6b5c861-a69f-43f7-ac40-b97ffd893cfb
+“python:S3776„"TRefactor this function to reduce its Cognitive Complexity from 20 to the 15 allowed.(ˆµÀĞJ$dde386e2-27ff-43d2-9155-93dfa45284f5
+{python:S5754˜"<Specify an exception class to catch or reraise the exception(ˆÊÉ·J$ded5474c-f332-4087-a2c7-ee039b3db3b9
+opython:S5806›"+Rename this variable; it shadows a builtin.(™˜Ø¡ûÿÿÿÿJ$761e6c8a-9be7-4dad-99f9-6f67a4cb97fe
+“python:S3776¤"TRefactor this function to reduce its Cognitive Complexity from 23 to the 15 allowed.(¸„³ÒJ$b3771093-c1f9-43e7-bbe2-a11f97712b7f
+spython:S1135ı"4Complete the task associated to this "TODO" comment.(ÒÒÌŸJ$c7ecd588-5e71-4c09-92bf-537e85821201
+jpython:S5806Î"+Rename this variable; it shadows a builtin.(¾›¨·J$0d7b88ff-d9f6-41d0-8cb0-9216aaa508a5
